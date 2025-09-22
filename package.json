@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "start:dev:express": "nodemon -r tsconfig-paths/register --exec ts-node ./src/infraestructure/gateways/expressGateway.ts",
-    "start:express": "ts-node -r tsconfig-paths/register ./src/infraestructure/gateways/expressGateway.ts"
+    "start:express": "ts-node -r tsconfig-paths/register ./src/infraestructure/gateways/expressGateway.ts",
+    "deploy": "pre-deploy.cmd && cdk deploy"
   },
   "keywords": [],
   "author": "",

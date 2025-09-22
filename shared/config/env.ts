@@ -2,13 +2,17 @@ import zod from 'zod'
 import { config } from 'dotenv'
 
 interface IEnv {
-  PORT: number
+  PORT: number,
+  ACCOUNT: string,
+  REGION: string
 }
 
 class Env {
   private static envs: IEnv
   private static envSchema = zod.object({
-    PORT: zod.string().transform((val) => parseInt(val))
+    PORT: zod.string().transform((val) => parseInt(val)),
+    ACCOUNT: zod.string(),
+    REGION: zod.string(),
   })
 
   private constructor(){}
@@ -30,5 +34,7 @@ class Env {
 }
 
 export const {
-  PORT
+  PORT,
+  ACCOUNT,
+  REGION
 }: IEnv = Env.getInstance()

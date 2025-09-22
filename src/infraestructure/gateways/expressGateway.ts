@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { PORT } from "../../shared/config/env";
 import { CalculateDateExpressController } from "../controllers/express";
 import { CalculateDateMiddleware } from "../middlewares/express";
 import { ResourceNotFoundException } from "@/domain/exceptions/exceptions";
 import { CustomExceptionHandler } from "../exceptions/customExceptionHandler";
+import { PORT } from "../../../shared/config/env";
 
 const app = express();
 
