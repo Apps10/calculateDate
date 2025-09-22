@@ -11,7 +11,7 @@ export class CalculateDateUseCase {
     const tempCurrentDate = new Date();
 
     date = date ?? tempCurrentDate;
-    const calculateDate = new CalculateDate(this.businessTime, date); //el pais debe ser dinamido
+    const calculateDate = new CalculateDate(this.businessTime, date);
 
     calculateDate.addDays(days);
     calculateDate.addHours(hours);

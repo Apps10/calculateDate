@@ -6,8 +6,7 @@ export class ResponseHandler {
     return res.status(status).json(dataResponse);
   }
 
-  static error(res: Response, data: string | Object, status: number = 400) {
-    const dataResponse = typeof data === "string" ? { message: data } : data;
-    return res.status(status).json(dataResponse);
+  static error(res: Response, categoryError:string, data: string | Object, status: number = 400) {
+    return res.status(status).json({error: categoryError, message: data});
   }
 }

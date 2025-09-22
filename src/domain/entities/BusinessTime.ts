@@ -12,7 +12,7 @@ export class BusinessTime {
   adjustmentIfIsAnInvalidDate(dt: DateProvider) {
     if (this.isBusinessHour(dt) && this.isBusinessDay(dt)) return dt;
 
-    dt = this.setBeforeBusinessHour(dt);
+    dt = this.setBeforeBusinessDate(dt);
 
     return dt;
   }
@@ -41,7 +41,7 @@ export class BusinessTime {
   }
 
   
-  setBeforeBusinessHour(dt: DateProvider) {
+  setBeforeBusinessDate(dt: DateProvider) {
     if (dt.minute > 0) dt = dt.set({ minute: 0 });
 
     while (!this.isBusinessHour(dt) || !this.isBusinessDay(dt)) {

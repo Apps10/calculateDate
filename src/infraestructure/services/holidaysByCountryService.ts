@@ -1,6 +1,7 @@
-import { Countries } from "../../domain/interfaces/countryInterface";
-import { HolidayService } from "../../domain/services/holidayService";
+import { InternalServerErrorByDomainException } from "@/domain/exceptions/exceptions";
 import { HolidaysCOL } from "../provider/holidays/Col";
+import { Countries } from "@/domain/interfaces";
+import { HolidayService } from "@/domain/services";
 
 export const countryholidaysRecord: Record<Countries, string[]> = {
   COL: HolidaysCOL,
@@ -12,7 +13,7 @@ export class HolidayByCountryService implements HolidayService {
   constructor(country: Countries = "COL") {
     this.countryHolidays = countryholidaysRecord[country];
     if (this.countryHolidays.length === 0)
-      throw Error("HolidayService: invalid country");
+      throw new InternalServerErrorByDomainException("HolidayService: invalid country");
   }
 
   isHoliday(date: Date): boolean {

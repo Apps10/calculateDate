@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 import { CountriesZoneType } from "../interfaces";
 import { BusinessTime } from "./BusinessTime";
+import { InternalServerErrorByDomainException } from "../exceptions/exceptions";
 
 export class CalculateDate {
   private timeZone = CountriesZoneType["COL"];
@@ -13,7 +14,7 @@ export class CalculateDate {
       : DateTime.now().setZone(this.timeZone);
 
     if (!this.dateInstance.isValid) {
-      throw new Error("Calculate error");
+      throw new InternalServerErrorByDomainException("Calculate error")
     }
   }
 
@@ -71,11 +72,12 @@ export class CalculateDate {
 
   private ensureIsAnPositiveNumber(value: number) {
     if (isNaN(value)) {
-      throw new Error(`is not a number`);
+      throw new InternalServerErrorByDomainException(`${value} is not a number`)
+
     }
 
     if (value <= 0) {
-      throw new Error(`is not a positive number`);
+      throw new InternalServerErrorByDomainException(`${value} is not a positive number`)
     }
   }
 }

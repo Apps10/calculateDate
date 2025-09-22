@@ -8,10 +8,9 @@ export function CalculateDateMiddleware(req: Request, res:Response, next: NextFu
   const { error, data } = paramsValidator.safeParse(req.query)
   
   if(error){
-    return ResponseHandler.error(res, { error: 'InvalidParameters', message: z.treeifyError(error) }, 400)
+    return ResponseHandler.error(res, 'InvalidParameters', z.treeifyError(error), 400)
   }
   req.body = data
 
   return next()
-
 }
