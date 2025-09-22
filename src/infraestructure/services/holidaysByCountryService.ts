@@ -7,25 +7,16 @@ export const countryholidaysRecord: Record<Countries, string[]> = {
 };
 
 export class HolidayByCountryService implements HolidayService {
-  countryHolidays: Array<Date> = [];
+  countryHolidays: Array<String> = [];
 
   constructor(country: Countries = "COL") {
-    this.countryHolidays = countryholidaysRecord[country].map(
-      (h) => new Date(h)
-    );
+    this.countryHolidays = countryholidaysRecord[country];
     if (this.countryHolidays.length === 0)
       throw Error("HolidayService: invalid country");
   }
 
-  getCountOfHolidayBetweenDays(initDate: Date, endDate: Date) {
-    return this.countryHolidays.filter((holiday) => {
-      const t = holiday.getTime();
-      return t >= initDate.getTime() && t <= endDate.getTime();
-    }).length;
-  }
-
   isHoliday(date: Date): boolean {
-    return this.countryHolidays.includes(date)
+    return this.countryHolidays.includes(`${date.toISOString().split('T')[0]}`)
   }
 
 }
