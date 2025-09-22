@@ -1,8 +1,7 @@
 import { DateObjectUnits, DateTime } from "luxon";
-import { Countries, CountriesZoneType } from "../interfaces/countryInterface";
-import { CalculateDate } from "../entities/calculateDate";
-import { BusinessTime } from "../entities/businessTime";
-import { HolidayByCountryService } from "@/infraestructure/services/holidaysByCountryService";
+import { CountriesZoneType } from "../interfaces";
+import { CalculateDate, BusinessTime } from "../entities";
+import { HolidayByCountryService } from "@/infraestructure/services";
 
 const holidayService = new HolidayByCountryService("COL");
 const businessTime = new BusinessTime(holidayService)

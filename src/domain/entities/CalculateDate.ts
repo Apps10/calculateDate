@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
-import { CountriesZoneType } from "../interfaces/countryInterface";
-import { BusinessTime } from "./businessTime";
+import { CountriesZoneType } from "../interfaces";
+import { BusinessTime } from "./BusinessTime";
 
 export class CalculateDate {
   private timeZone = CountriesZoneType["COL"];
@@ -22,11 +22,13 @@ export class CalculateDate {
 
     this.ensureIsAnPositiveNumber(numberOfDaysToAdd);
 
-    this.dateInstance = this.businessTime.adjustmentIfIsAnInvalidDate(this.dateInstance);
+    this.dateInstance = this.businessTime.adjustmentIfIsAnInvalidDate(
+      this.dateInstance
+    );
 
     //sumar a un proximo dia valido
-    while(numberOfDaysToAdd !== 0){
-      numberOfDaysToAdd-= 1
+    while (numberOfDaysToAdd !== 0) {
+      numberOfDaysToAdd -= 1;
       this.dateInstance = this.businessTime.setNextBusinessDate(
         this.dateInstance
       );
@@ -38,11 +40,13 @@ export class CalculateDate {
 
     this.ensureIsAnPositiveNumber(numberOfHoursToAdd);
     //evitar las horas no laborales
-    this.dateInstance = this.businessTime.adjustmentIfIsAnInvalidDate(this.dateInstance);
+    this.dateInstance = this.businessTime.adjustmentIfIsAnInvalidDate(
+      this.dateInstance
+    );
 
     //sumar a una proxima hora valida
-    while(numberOfHoursToAdd !== 0){
-      numberOfHoursToAdd -= 1
+    while (numberOfHoursToAdd !== 0) {
+      numberOfHoursToAdd -= 1;
       this.dateInstance = this.businessTime.setNextBusinessHour(
         this.dateInstance
       );
@@ -58,7 +62,11 @@ export class CalculateDate {
   }
 
   toUTCString(): string {
-    return this.dateInstance.toUTC(0, { keepLocalTime: false}).toISO() ?? ""; //TODO: revisar, debe retornar lo que piden
+    return (
+      this.dateInstance
+        .toUTC(0, { keepLocalTime: false })
+        .toISO({ suppressMilliseconds: true }) ?? ""
+    ); 
   }
 
   private ensureIsAnPositiveNumber(value: number) {
@@ -70,5 +78,4 @@ export class CalculateDate {
       throw new Error(`is not a positive number`);
     }
   }
-
 }

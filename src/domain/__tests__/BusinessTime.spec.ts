@@ -1,6 +1,6 @@
 import { DateTime as dt } from 'luxon'
 import { HolidayByCountryService } from '@/infraestructure/services/holidaysByCountryService';
-import { BusinessTime } from '../entities/businessTime';
+import { BusinessTime } from '../entities/BusinessTime';
 
 const holidayService = new HolidayByCountryService("COL");
 const businessTime = new BusinessTime(holidayService)

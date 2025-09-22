@@ -1,5 +1,5 @@
-import { HolidayService } from "../services/holidayService";
-import { DateProvider } from "../interfaces/DateProviderInterface";
+import { HolidayService } from "../services";
+import { DateProvider } from "../interfaces";
 
 export class BusinessTime {
   private WORK_START_HOUR = 8;
@@ -9,20 +9,18 @@ export class BusinessTime {
 
   constructor(private readonly holidayService: HolidayService) {}
 
-  
   adjustmentIfIsAnInvalidDate(dt: DateProvider) {
     if (this.isBusinessHour(dt) && this.isBusinessDay(dt)) return dt;
-    
-    dt = this.setBeforeBusinessHour(dt)
+
+    dt = this.setBeforeBusinessHour(dt);
 
     return dt;
   }
 
-
   setNextBusinessDate(dt: DateProvider) {
     do {
       dt = dt.plus({ days: 1 });
-    } while(!this.isBusinessDay(dt))
+    } while (!this.isBusinessDay(dt));
 
     return dt;
   }
@@ -42,7 +40,7 @@ export class BusinessTime {
     return dt;
   }
 
-
+  
   setBeforeBusinessHour(dt: DateProvider) {
     if (dt.minute > 0) dt = dt.set({ minute: 0 });
 
@@ -53,7 +51,6 @@ export class BusinessTime {
     return dt;
   }
 
-
   setBeforeBusinessDay(dt: DateProvider) {
     while (!this.isBusinessDay(dt)) {
       dt = dt.minus({ days: 1 });
@@ -62,7 +59,6 @@ export class BusinessTime {
     return dt;
   }
 
-  
   isBusinessDay(dt: DateProvider): boolean {
     const date = dt.toJSDate();
     return !this.holidayService.isHoliday(date) && !dt.isWeekend;
@@ -87,10 +83,8 @@ export class BusinessTime {
       return false;
 
     // final el almuerzo
-    if (hour === this.LUNCH_END_HOUR && minute === 0)  return false;
+    if (hour === this.LUNCH_END_HOUR && minute === 0) return false;
 
     return true;
   }
-
-  
 }

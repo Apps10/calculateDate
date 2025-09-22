@@ -1,6 +1,6 @@
-import { BusinessTime } from "@/domain/entities/businessTime";
+import { BusinessTime } from "@/domain/entities/BusinessTime";
 import { CalculateDateDto } from "../dtos/calculateDateDto";
-import { CalculateDate } from "@/domain/entities/calculateDate";
+import { CalculateDate } from "@/domain/entities/CalculateDate";
 
 export class CalculateDateUseCase {
   constructor(
@@ -16,6 +16,6 @@ export class CalculateDateUseCase {
     calculateDate.addDays(days);
     calculateDate.addHours(hours);
 
-    return calculateDate.toString();
+    return calculateDate.toUTCString();
   }
 }
