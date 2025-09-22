@@ -14,14 +14,14 @@ export class CalculateDateLambda {
 
 
     const lambdaInstance = new lambda.Function(scope, 'CalculateDateLambda', {
-      runtime: lambda.Runtime.NODEJS_18_X,
-      handler: 'handler.main', // archivo handler.ts -> export const main = ...
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda')),
+      runtime: lambda.Runtime.NODEJS_22_X,
+      handler: 'calculateDate.main', 
+      code: lambda.Code.fromAsset( path.join(__dirname, '../../dist/cdk/resources/lambdas')),    
       layers: [codeLayer, depsLayer],
       role: basicRole
     });
 
-    new LambdaApiGW(scope, lambdaInstance, '/', 'GET')
+    new LambdaApiGW(scope, lambdaInstance, 'calculate', 'GET')
 
   }
 }

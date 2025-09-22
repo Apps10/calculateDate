@@ -66,7 +66,7 @@ export class CalculateDate {
     return (
       this.dateInstance
         .toUTC(0, { keepLocalTime: false })
-        .toISO({ suppressMilliseconds: true }) ?? ""
+        .toISO() ?? ""
     ); 
   }
 
