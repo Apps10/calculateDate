@@ -1,12 +1,13 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { CalculateDateLambda } from './lambdas/calculateDateLambda';
+import { CodeLayer, DependenciesCodeLayer } from './layers';
 
 
-export class LambdaStack extends cdk.Stack {
+export class LayerStack extends cdk.Stack {
   constructor(scope: Construct, id:string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    new CalculateDateLambda(this)
+    new CodeLayer(this)
+    new DependenciesCodeLayer(this)
   }
 }

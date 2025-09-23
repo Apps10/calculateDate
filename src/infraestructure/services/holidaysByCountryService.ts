@@ -1,7 +1,7 @@
-import { InternalServerErrorByDomainException } from "@/domain/exceptions/exceptions";
+import { InternalServerErrorByDomainException } from "../../domain/exceptions/exceptions";
 import { HolidaysCOL } from "../provider/holidays/Col";
-import { Countries } from "@/domain/interfaces";
-import { HolidayService } from "@/domain/services";
+import { Countries } from "../../domain/interfaces";
+import { HolidayService } from "../../domain/services";
 
 export const countryholidaysRecord: Record<Countries, string[]> = {
   COL: HolidaysCOL,

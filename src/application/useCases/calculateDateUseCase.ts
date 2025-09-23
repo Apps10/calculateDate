@@ -1,6 +1,6 @@
-import { BusinessTime } from "@/domain/entities/BusinessTime";
+import { BusinessTime } from "../../domain/entities/BusinessTime";
 import { CalculateDateDto } from "../dtos/calculateDateDto";
-import { CalculateDate } from "@/domain/entities/CalculateDate";
+import { CalculateDate } from "../../domain/entities/CalculateDate";
 
 export class CalculateDateUseCase {
   constructor(

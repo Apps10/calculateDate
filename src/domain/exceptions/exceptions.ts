@@ -1,4 +1,4 @@
-import { CustomException } from "@/shared/exceptions/customException";
+import { CustomException } from "../../shared/exceptions/customException";
 
 export const InternalServerErrorByDomainException = CustomException(
   "Error",

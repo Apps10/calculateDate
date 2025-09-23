@@ -2,3 +2,4 @@ node_modules
 .env
 prueba.md
 cdk.out
+dist

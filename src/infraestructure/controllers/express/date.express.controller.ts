@@ -1,10 +1,10 @@
-import { CalculateDateDto } from "@/application/dtos/calculateDateDto";
-import { CalculateDateUseCase } from "@/application/useCases/calculateDateUseCase";
-import { BusinessTime } from "@/domain/entities/BusinessTime";
-import { BadRequestException } from "@/domain/exceptions/exceptions";
-import { ResponseHandler } from "@/infraestructure/helpers/express/ResponseCustom";
-import { HolidayByCountryService } from "@/infraestructure/services/holidaysByCountryService";
 import { Request, Response } from "express";
+import { CalculateDateDto } from "../../../application/dtos/calculateDateDto";
+import { CalculateDateUseCase } from "../../../application/useCases/calculateDateUseCase";
+import { BusinessTime } from "../../../domain/entities/BusinessTime";
+import { BadRequestException } from "../../../domain/exceptions/exceptions";
+import { ResponseHandler } from "../../../infraestructure/helpers/express/ResponseCustom";
+import { HolidayByCountryService } from "../../../infraestructure/services/holidaysByCountryService";
 
 export class CalculateDateExpressController {
   private holidayService = new HolidayByCountryService()

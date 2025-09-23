@@ -4,7 +4,7 @@ import { CalculateDateExpressController } from "../controllers/express";
 import { CalculateDateMiddleware } from "../middlewares/express";
 import { ResourceNotFoundException } from "@/domain/exceptions/exceptions";
 import { CustomExceptionHandler } from "../exceptions/customExceptionHandler";
-import { PORT } from "../../../shared/config/env";
+import { PORT } from "../../shared/config/env";
 
 const app = express();
 
@@ -17,10 +17,10 @@ app.get(
   new CalculateDateExpressController().run
 );
 app.use(() => {
-  throw new ResourceNotFoundException('Page Not Found')
+  throw new ResourceNotFoundException("Page Not Found");
 });
 
-app.use(CustomExceptionHandler.catch)
+app.use(CustomExceptionHandler.catch);
 
 app.listen(PORT, () => {
   console.log(`Service Running on Port: ${PORT}`);

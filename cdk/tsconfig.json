@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@code/*": ["./resources/layers/code/nodejs/node_modules/@code/*"],
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,  // opcional pero recomendado
     "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": [
-      "es2022"
-    ],
-    "outDir": "./dist", 
+    "module": "CommonJS",
+    "lib": ["es2022"],
+    "outDir": "./dist",        // 🔹 carpeta fuera de cdk para evitar sobrescribir
+    "rootDir": "./",                 // 🔹 base de los archivos de entrada (bin y lib)
     "declaration": true,
     "strict": true,
     "noImplicitAny": true,
@@ -22,12 +26,15 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "typeRoots": ["./node_modules/@types"]
   },
+  "include": [
+    "resources/**/*.ts"
+  ],
   "exclude": [
+    "../build",      // ✅ excluir carpeta de salida
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "resources/layers"
   ]
 }
