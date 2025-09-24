@@ -91,13 +91,13 @@ npm run cdk deploy:layers
 ⚡ tsc compila a cdk/dist conservando archivos .ts para depuración.
 
 
-Para desplegar solo las Lambdas (sin volver a subir layers pesadas):
+4️⃣ Para desplegar solo las Lambdas (sin volver a subir layers pesadas):
 ```bash
 npm run cdk:deploy:lambdas
 ```
 
 
-### 🧩 Endpoints
+## 🧩 Endpoints
 Una vez desplegado, el API Gateway expone un endpoint similar a:
 
 ```bash
@@ -144,4 +144,13 @@ Para probar la lógica de fechas sin desplegar en AWS:
 ```bash
 npm run dev
 Esto levanta un servidor Express en http://localhost:3000 que simula el comportamiento de la Lambda.
+```
+
+
+### 🧪 Test Unitarios
+Para probar correr los test:
+
+```bash
+npm run test
+Esto ejecuta algunos test unitarios del dominio
 ```
