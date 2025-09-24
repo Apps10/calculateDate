@@ -142,7 +142,7 @@ Cache de dependencias: Usa npm ci y un package-lock.json limpio para reducir el 
 Para probar la lógica de fechas sin desplegar en AWS:
 
 ```bash
-npm run dev
+npm run start:express
 Esto levanta un servidor Express en http://localhost:3000 que simula el comportamiento de la Lambda.
 ```
 
